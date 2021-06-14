@@ -8,15 +8,12 @@ import { IconContext } from 'react-icons';
 const MovieInfo = (props) => {
 
     const [movie, movieHandler] = useState({});
-    // console.log(props.id)
 
     let btnClass = ["info "];
 
     useEffect(() => {
-        console.log("NAPRAVIO SAM KOMPOENTU");
         axios.get(`http://www.omdbapi.com/?i=${props.id}&plot=full&apikey=abfce362`)
             .then(res => {
-                console.log(res.data)
                 movieHandler(res.data);
             })
             .catch(error => {

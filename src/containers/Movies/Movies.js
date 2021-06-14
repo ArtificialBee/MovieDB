@@ -11,17 +11,15 @@ const Movies = () => {
     const [movies, moviesHandler] = useState([]);
     const [searchMovies, searchMoviesHandler] = useState("");
     const [foundMovies, foundMoviesHandler] = useState("");
-    const [bestMovies, bestMoviesHandler] = useState([]);
     const [infoMovie, infoMovieHandler] = useState({
         showInfo: false,
         movie: null
     })
 
     useEffect(() => {
-        if (searchMovies) {
-            axios.get(`http://www.omdbapi.com/?s=${searchMovies}&page=1&apikey=abfce362`)
+        if (foundMovies) {
+            axios.get(`http://www.omdbapi.com/?s=${foundMovies}&page=1&apikey=abfce362`)
                 .then(res => {
-                    console.log(res)
                     moviesHandler(res.data.Search);
                 })
                 .catch(error => {
@@ -32,10 +30,9 @@ const Movies = () => {
 
     const searchMoviesTitle = (event) => {
         searchMoviesHandler(event.target.value);
-        console.log(searchMovies)
     }
 
-    const found = (searchMovies) => {
+    const found = () => {
         foundMoviesHandler(searchMovies);
     }
 
@@ -44,7 +41,6 @@ const Movies = () => {
             return mov.imdbID === id;
         })
         movie = movie[0];
-        // console.log(movie);
         infoMovieHandler({
             showInfo: true,
             movie: movie
