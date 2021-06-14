@@ -1,0 +1,28 @@
+.Movies {
+  margin-top: 20px;
+}
+
+.Search {
+  height: 100px;
+  /* background-color: green; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.AllMovies {
+  /* background-color: green; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.searchForMovies {
+  height: 100px;
+  font-size: 2rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}

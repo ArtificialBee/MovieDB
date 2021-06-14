@@ -1,0 +1,129 @@
+.info {
+  background-color: rgb(0, 0, 0);
+  width: 70%;
+  color: white;
+  overflow-y: scroll;
+  height: 550px;
+  z-index: 300;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  opacity: 0;
+}
+
+.openInfo {
+  animation: open 0.2s ease-in 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.closeInfo {
+  animation: close 0.2s ease-in 0.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes open {
+  0% {
+    opacity: 0;
+    transform: translate(-100%, -50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes close {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.info::-webkit-scrollbar {
+  display: none;
+}
+
+.title {
+  color: white;
+  /* text-align: center; */
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.intro {
+  /* background-color: red; */
+  display: flex;
+  justify-content: space-evenly;
+  max-height: 350px;
+  width: 100%;
+  /* align-items: center; */
+  color: white;
+  margin-bottom: 20px;
+}
+
+.intro p:first-child {
+  text-transform: capitalize;
+}
+
+.intro img {
+  width: 200px;
+}
+.img-rating {
+  max-width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-right: 30px;
+  /* background-color: brown; */
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50%;
+  max-height: 380px;
+  /* background-color: yellow; */
+}
+
+.about p {
+  font-weight: 600;
+}
+
+.about span {
+  font-style: italic;
+  font-weight: 400;
+  margin-left: 10px;
+}
+
+.plotName {
+  margin-bottom: 10px;
+  padding-left: 20px;
+  font-size: 1.5rem;
+}
+
+.plotCont {
+  padding: 10px 30px;
+  /* background-color: red; */
+  max-height: 400px;
+  font-style: italic;
+}
+
+.closeButton {
+  color: white;
+  font-size: 25px;
+  background-color: rgb(172, 172, 172);
+  border-radius: 50%;
+  position: fixed;
+  right: 20px;
+  top: 20px;
+}

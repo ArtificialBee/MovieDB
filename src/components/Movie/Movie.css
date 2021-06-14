@@ -1,0 +1,48 @@
+.Movie {
+  background-color: silver;
+  margin: 10px 10px 0 10px;
+  height: 200px;
+  position: relative;
+  opacity: 0;
+  animation: showMovies 1s ease-in 0.5s;
+  animation-fill-mode: forwards;
+  cursor: pointer;
+}
+
+@keyframes showMovies {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.Movie img {
+  height: 100%;
+  /* overflow: hidden; */
+}
+
+.Movie h3 {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.801);
+  color: white;
+  font-weight: 400;
+  letter-spacing: 2px;
+  white-space: normal;
+  width: 100%;
+}
+
+.star,
+.heart {
+  position: absolute;
+  bottom: 5px;
+}
+
+.star {
+  left: 10px;
+}
+
+.heart {
+  right: 10px;
+}

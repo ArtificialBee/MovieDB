@@ -1,10 +1,25 @@
 import React from 'react';
 
-const SearchMovies = () => {
+import './SearchMovies.css'
+import { BsSearch } from 'react-icons/bs'
+
+const SearchMovies = (props) => {
+
     return (
-        <>
-            <input type="text" placeholder="Search..." />
-        </>
+        <div className="SearchMovies">
+            <input
+                type="text"
+                placeholder="Search..."
+                onChange={(event) => props.change(event)}
+                value={props.value}
+                className="srcInput" />
+            <BsSearch
+                onClick={props.clicked}
+                className="srcBtn"
+                size="20"
+                cursor="pointer"
+                color="white" />
+        </div>
     );
 }
 

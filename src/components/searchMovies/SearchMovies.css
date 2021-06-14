@@ -1,0 +1,15 @@
+.srcInput {
+  height: 40px;
+  width: 400px;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.SearchMovies {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 500px;
+}

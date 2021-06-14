@@ -1,11 +1,14 @@
 import React from 'react';
+
+import './Layout.css'
+
 import Movies from '../../containers/Movies/Movies'
 
 const Layout = () => {
     return (
-        <div>
-            <h1>Movie database</h1>
-            <p>MOVIES</p>
+        <div className="Layout">
+            <h1 className="moviedb">Movie database</h1>
+            <Movies />
         </div>
     );
 }
