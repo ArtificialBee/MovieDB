@@ -14,7 +14,11 @@ const Movies = () => {
     const [infoMovie, infoMovieHandler] = useState({
         showInfo: false,
         movie: null
-    })
+    });
+    const [favMovies, favMoviesHandler] = useState({
+        showFav: false,
+        favourite: []
+    });
 
     useEffect(() => {
         if (foundMovies) {
@@ -28,6 +32,13 @@ const Movies = () => {
         }
     }, [foundMovies]);
 
+    useEffect(() => {
+        const memory = JSON.parse(localStorage.getItem("favMovies"));
+        if (memory !== null) {
+            favMoviesHandler({ showFav: true, favourite: memory });
+        }
+    }, [])
+
     const searchMoviesTitle = (event) => {
         searchMoviesHandler(event.target.value);
     }
@@ -37,10 +48,13 @@ const Movies = () => {
     }
 
     const info = (id) => {
+        console.log("POZVALA SE INFO")
+        console.log(id)
         let movie = movies.filter(mov => {
             return mov.imdbID === id;
         })
         movie = movie[0];
+        console.log(movie);
         infoMovieHandler({
             showInfo: true,
             movie: movie
@@ -52,6 +66,28 @@ const Movies = () => {
             showInfo: false,
             movie: null
         });
+    }
+
+    const addToFavourite = (id) => {
+        let newFavourite = movies.filter(movie => { //Izdvajamo film koji smo otvorili
+            return movie.imdbID === id;
+        })[0];
+        let mem = JSON.parse(localStorage.getItem("favMovies")); //Povlacimo podatke iz localStorage
+        if (!mem) { //Ukoliko trenutno u localStorage ne postoji favMovies
+            mem = [newFavourite];
+        }
+        else {  //Ukoliko postoji, dodaj novi film na pocetak niza
+            if (!mem.filter(movie => {
+                return movie.imdbID === id;
+            })[0]) {
+                mem.unshift(newFavourite);
+            }
+        }
+        if (mem.length > 5) { //Ukoliko imamo vise od 5 filmova, skini posljednji sa liste
+            mem.pop();
+        }
+        localStorage.setItem("favMovies", JSON.stringify(mem));
+        favMoviesHandler({ showFav: true, favourite: mem });
     }
 
     return (
@@ -76,7 +112,20 @@ const Movies = () => {
                         Search for movies...
                     </h1>}
             </div>
-            {infoMovie.showInfo ? <MovieInfo id={infoMovie.movie.imdbID} closeInfo={closeInfo} show={infoMovie.showInfo} /> : null}
+            <div className="favourite">
+                <h1 className="fav-h1">Favourite movies:</h1>
+                <div className="fav-movies">
+                    {favMovies.favourite.map(movie => {
+                        return <Movie title={movie.Title}
+                            img={movie.Poster}
+                            key={movie.imdbID}
+                            id={movie.imdbID}
+                            info={info} />
+                    })}
+                </div>
+            </div>
+            {infoMovie.showInfo ? <MovieInfo id={infoMovie.movie.imdbID} closeInfo={closeInfo} show={infoMovie.showInfo} click={addToFavourite} /> : null}
+
         </div>
     );
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { AiOutlineClose } from 'react-icons/ai'
+import { AiFillHeart } from 'react-icons/ai'
 
 import './MovieInfo.css'
 import { IconContext } from 'react-icons';
@@ -30,6 +31,8 @@ const MovieInfo = (props) => {
 
     return (
         <div className="info openInfo">
+            <button className="favMovie" onClick={() => props.click(props.id)}><AiFillHeart size="30" color="#db3838" /></button>
+
             <IconContext.Provider value={{
                 className: "closeButton"
             }}>
@@ -39,6 +42,7 @@ const MovieInfo = (props) => {
             <h1 className="title">{movie.Title}</h1>
             <div className="intro">
                 <div className="img-rating">
+
                     <img src={movie.Poster} alt="poster" />
                     <p>Rating: {movie.imdbRating}</p>
                 </div>

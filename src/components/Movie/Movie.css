@@ -9,6 +9,11 @@
   cursor: pointer;
 }
 
+.Movie:hover {
+  position: relative;
+  box-shadow: 0 0 15px black;
+}
+
 @keyframes showMovies {
   from {
     opacity: 0;

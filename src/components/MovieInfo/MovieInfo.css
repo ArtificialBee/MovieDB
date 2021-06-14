@@ -127,3 +127,14 @@
   right: 20px;
   top: 20px;
 }
+
+.favMovie {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: white;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
