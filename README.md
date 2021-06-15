@@ -3,6 +3,8 @@
 It is app for search movies. 
 Movie API: OMDB API
 
+For saving favourite movies -> localStorage
+
 Application created in React.js
 
 
